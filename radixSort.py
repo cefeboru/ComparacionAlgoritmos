@@ -1,4 +1,5 @@
 import time
+import random
 
 def radixsort( aList ):
   RADIX = 10
@@ -28,9 +29,23 @@ def radixsort( aList ):
     # move to next digit
     placement *= RADIX
 
-numberElements = [10,100,1000,10000,1000000]
-aList = []
-startTime = time.time()
-radixsort(aList)
-endTime = time.time()
-print("Se ordeno la lista en "+ str(endTime - startTime) )
+print("Radix Sort:")
+sizesArray = [10,100,1000,10000,100000,1000000]
+for size in sizesArray:
+  aList = [0]*size
+  for i in range(0,size):
+    aList[i] = random.randint(1,1000)
+
+  tiemposEjecucion = [0.0]*10
+  print("Ordenando "+str(size)+" elementos:")
+  for i in range(0,10):
+    #Guardamos la lista en un arreglo temporal
+    unsortedList = aList[:]
+
+    startTime = time.time()
+    radixsort(unsortedList)
+    endTime = time.time()
+    deltaTime = endTime - startTime
+    tiemposEjecucion[i] = deltaTime
+    print("Iteracion "+str(i+1)+": "+str(deltaTime))
+  print("Tiempos = "+str(tiemposEjecucion))
