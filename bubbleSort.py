@@ -10,7 +10,7 @@ def bubbleSort(alist):
                 alist[i+1] = temp
 
 sizesArray = [10,100,1000,10000,100000,1000000]
-print("Quick Sort")
+print("Bubble Sort")
 
 for size in sizesArray:
   aList = [0]*size
